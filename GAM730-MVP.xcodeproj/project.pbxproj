@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		18429F8824CF10FA00955B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18429F8624CF10FA00955B2A /* Main.storyboard */; };
 		18429F8A24CF10FA00955B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18429F8924CF10FA00955B2A /* Assets.xcassets */; };
 		18429F8D24CF10FA00955B2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18429F8B24CF10FA00955B2A /* LaunchScreen.storyboard */; };
+		18429F9524CF13A000955B2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18429F9424CF13A000955B2A /* GoogleService-Info.plist */; };
+		187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EC15324D9D8AE00CDEE9A /* SignUpController.swift */; };
+		187F13AC24D86C2400529089 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F13AB24D86C2400529089 /* LoginController.swift */; };
+		3EED625D21494909115E4206 /* Pods_GAM730_MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,12 @@
 		18429F8924CF10FA00955B2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18429F8C24CF10FA00955B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18429F8E24CF10FA00955B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18429F9424CF13A000955B2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		187EC15324D9D8AE00CDEE9A /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		187F13AB24D86C2400529089 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		3A7423E763AB08F2D398E188 /* Pods-GAM730-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GAM730-MVP.debug.xcconfig"; path = "Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP.debug.xcconfig"; sourceTree = "<group>"; };
+		CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GAM730_MVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1FD648DEE3CCDD07A88F6B2 /* Pods-GAM730-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GAM730-MVP.release.xcconfig"; path = "Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EED625D21494909115E4206 /* Pods_GAM730_MVP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		150158E4615CB58A0724CDF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A7423E763AB08F2D398E188 /* Pods-GAM730-MVP.debug.xcconfig */,
+				F1FD648DEE3CCDD07A88F6B2 /* Pods-GAM730-MVP.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		18429F7424CF10F900955B2A = {
 			isa = PBXGroup;
 			children = (
 				18429F7F24CF10FA00955B2A /* GAM730-MVP */,
 				18429F7E24CF10FA00955B2A /* Products */,
+				150158E4615CB58A0724CDF2 /* Pods */,
+				58B68FAF7E864F409518478E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +81,23 @@
 				18429F8024CF10FA00955B2A /* AppDelegate.swift */,
 				18429F8224CF10FA00955B2A /* SceneDelegate.swift */,
 				18429F8424CF10FA00955B2A /* ViewController.swift */,
+				187F13AB24D86C2400529089 /* LoginController.swift */,
+				187EC15324D9D8AE00CDEE9A /* SignUpController.swift */,
 				18429F8624CF10FA00955B2A /* Main.storyboard */,
 				18429F8924CF10FA00955B2A /* Assets.xcassets */,
 				18429F8B24CF10FA00955B2A /* LaunchScreen.storyboard */,
 				18429F8E24CF10FA00955B2A /* Info.plist */,
+				18429F9424CF13A000955B2A /* GoogleService-Info.plist */,
 			);
 			path = "GAM730-MVP";
+			sourceTree = "<group>";
+		};
+		58B68FAF7E864F409518478E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18429F9124CF10FB00955B2A /* Build configuration list for PBXNativeTarget "GAM730-MVP" */;
 			buildPhases = (
+				9BB37850A0B93DB277273D15 /* [CP] Check Pods Manifest.lock */,
 				18429F7924CF10FA00955B2A /* Sources */,
 				18429F7A24CF10FA00955B2A /* Frameworks */,
 				18429F7B24CF10FA00955B2A /* Resources */,
+				850100678E0441D39D44CC8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18429F8D24CF10FA00955B2A /* LaunchScreen.storyboard in Resources */,
+				18429F9524CF13A000955B2A /* GoogleService-Info.plist in Resources */,
 				18429F8A24CF10FA00955B2A /* Assets.xcassets in Resources */,
 				18429F8824CF10FA00955B2A /* Main.storyboard in Resources */,
 			);
@@ -133,14 +169,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		850100678E0441D39D44CC8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BB37850A0B93DB277273D15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GAM730-MVP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18429F7924CF10FA00955B2A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */,
 				18429F8524CF10FA00955B2A /* ViewController.swift in Sources */,
 				18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */,
 				18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */,
+				187F13AC24D86C2400529089 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +362,7 @@
 		};
 		18429F9224CF10FB00955B2A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A7423E763AB08F2D398E188 /* Pods-GAM730-MVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +381,7 @@
 		};
 		18429F9324CF10FB00955B2A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1FD648DEE3CCDD07A88F6B2 /* Pods-GAM730-MVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
