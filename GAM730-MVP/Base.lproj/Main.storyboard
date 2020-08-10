@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-19" y="152"/>
+            <point key="canvasLocation" x="-922" y="-30"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="e7H-Se-yVp">
@@ -88,11 +88,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-EF-TPw">
-                                <rect key="frame" x="115" y="541" width="145" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="BUTTON-signup"/>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundExample" translatesAutoresizingMaskIntoConstraints="NO" id="FiT-pA-Adb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For data purposes only" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mya-D7-nUE">
                                 <rect key="frame" x="18" y="406" width="339" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -130,6 +128,9 @@
                                     <segment title="Woman"/>
                                     <segment title="Non-Binary"/>
                                 </segments>
+                                <connections>
+                                    <action selector="genderSegmentValue:" destination="R0l-Eb-EUZ" eventType="valueChanged" id="CX4-Ia-awQ"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuC-Uj-ozq">
                                 <rect key="frame" x="18" y="238" width="339" height="34"/>
@@ -182,11 +183,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-EF-TPw">
+                                <rect key="frame" x="115" y="541" width="145" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="BUTTON-signup"/>
+                                <connections>
+                                    <action selector="signUpButtonPressed:" destination="R0l-Eb-EUZ" eventType="touchUpInside" id="k5z-gc-3Ba"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FiT-pA-Adb" firstAttribute="trailing" secondItem="6OS-Hw-Rpl" secondAttribute="trailing" id="9Gx-si-xZb"/>
+                            <constraint firstItem="FiT-pA-Adb" firstAttribute="leading" secondItem="6OS-Hw-Rpl" secondAttribute="leading" id="LSL-1c-vHc"/>
+                            <constraint firstItem="FiT-pA-Adb" firstAttribute="top" secondItem="6OS-Hw-Rpl" secondAttribute="top" id="OXk-fn-0X8"/>
+                            <constraint firstItem="FiT-pA-Adb" firstAttribute="bottom" secondItem="6OS-Hw-Rpl" secondAttribute="bottom" id="iv9-BZ-j5m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6OS-Hw-Rpl"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="FiT-pA-Adb" id="Kyq-Ng-fxr"/>
                         <outlet property="confirmPasswordTextField" destination="sis-Ud-pEd" id="bpw-vu-oq5"/>
                         <outlet property="countryTextField" destination="fuC-Uj-ozq" id="Dcl-vb-TKY"/>
                         <outlet property="dateOfBirthTextField" destination="TXw-lQ-jbi" id="lou-5h-wLa"/>
@@ -198,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQU-kE-GzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="729" y="-561"/>
+            <point key="canvasLocation" x="724" y="-70"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="Sj9-ge-rEf">
@@ -208,6 +224,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundExample" translatesAutoresizingMaskIntoConstraints="NO" id="agl-Yw-0Ia">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byp-Y0-xOW">
                                 <rect key="frame" x="20" y="54" width="339" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -292,20 +311,25 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="UYP-8r-EcX" firstAttribute="bottom" secondItem="agl-Yw-0Ia" secondAttribute="bottom" id="7B0-3b-Ren"/>
+                            <constraint firstItem="agl-Yw-0Ia" firstAttribute="leading" secondItem="UYP-8r-EcX" secondAttribute="leading" id="Ng7-RS-nr3"/>
                             <constraint firstItem="RYn-dP-gcP" firstAttribute="centerX" secondItem="nMq-IZ-n6g" secondAttribute="centerX" id="Nzx-3r-Pyg"/>
+                            <constraint firstItem="UYP-8r-EcX" firstAttribute="trailing" secondItem="agl-Yw-0Ia" secondAttribute="trailing" id="RdR-HI-Xkl"/>
                             <constraint firstItem="RYn-dP-gcP" firstAttribute="centerY" secondItem="nMq-IZ-n6g" secondAttribute="centerY" constant="150" id="Ywx-Ki-leU"/>
+                            <constraint firstItem="agl-Yw-0Ia" firstAttribute="top" secondItem="UYP-8r-EcX" secondAttribute="top" id="dYt-sF-LOR"/>
                             <constraint firstItem="RYn-dP-gcP" firstAttribute="centerX" secondItem="nMq-IZ-n6g" secondAttribute="centerX" id="fsp-Oi-wuP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UYP-8r-EcX"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="agl-Yw-0Ia" id="vzZ-rm-dgp"/>
                         <outlet property="emailTextField" destination="HKy-FS-lAf" id="Pay-FM-0fd"/>
                         <outlet property="passwordTextField" destination="1zx-OC-16K" id="hvy-Un-ll2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PpF-y0-ruu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="152"/>
+            <point key="canvasLocation" x="-70" y="-69"/>
         </scene>
     </scenes>
     <resources>
@@ -313,5 +337,6 @@
         <image name="BUTTON-signup" width="400" height="178"/>
         <image name="MainLogo" width="800" height="214"/>
         <image name="TransparentPhoneImages" width="800" height="672"/>
+        <image name="backgroundExample" width="512" height="874"/>
     </resources>
 </document>
