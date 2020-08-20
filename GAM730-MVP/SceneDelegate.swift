@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var authListener: AuthStateDidChangeListenerHandle?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,6 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        autoLogin()
+        
+        
+        print("autologin test")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +55,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    //MARK; - MAKE USER AUTO LOG IN
+    
+    func autoLogin() {
+        
+        authListener = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            
+            Auth.auth().removeIDTokenDidChangeListener(self.authListener!)
+            
+            if user != nil && userDefaults.object(forKey: kCURRENTUSER) != nil {
+                DispatchQueue.main.async {
+                    self.goToApp()
+                }
+            }
+            
+        })
+        
+    }
+    
+    private func goToApp() {
+//        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController(identifier: "MainView") as! UIViewController
+//        self.window?.rootViewController  = MainView
+    }
 
 }
 

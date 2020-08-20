@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1805843224EEAB72002B5FB7 /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */; };
+		1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805843324EEB60D002B5FB7 /* FirebaseListener.swift */; };
 		18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8024CF10FA00955B2A /* AppDelegate.swift */; };
 		18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8224CF10FA00955B2A /* SceneDelegate.swift */; };
 		18429F8524CF10FA00955B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8424CF10FA00955B2A /* ViewController.swift */; };
@@ -16,10 +18,14 @@
 		18429F9524CF13A000955B2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18429F9424CF13A000955B2A /* GoogleService-Info.plist */; };
 		187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EC15324D9D8AE00CDEE9A /* SignUpController.swift */; };
 		187F13AC24D86C2400529089 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F13AB24D86C2400529089 /* LoginController.swift */; };
+		18DA056A24E1814B0044D618 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA056924E1814B0044D618 /* FirebaseUser.swift */; };
+		18DA056C24E193160044D618 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA056B24E193160044D618 /* Constants.swift */; };
 		3EED625D21494909115E4206 /* Pods_GAM730_MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
+		1805843324EEB60D002B5FB7 /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
 		18429F7D24CF10FA00955B2A /* GAM730-MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GAM730-MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18429F8024CF10FA00955B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18429F8224CF10FA00955B2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +37,8 @@
 		18429F9424CF13A000955B2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		187EC15324D9D8AE00CDEE9A /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		187F13AB24D86C2400529089 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		18DA056924E1814B0044D618 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		18DA056B24E193160044D618 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A7423E763AB08F2D398E188 /* Pods-GAM730-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GAM730-MVP.debug.xcconfig"; path = "Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP.debug.xcconfig"; sourceTree = "<group>"; };
 		CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GAM730_MVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FD648DEE3CCDD07A88F6B2 /* Pods-GAM730-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GAM730-MVP.release.xcconfig"; path = "Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,11 +86,15 @@
 		18429F7F24CF10FA00955B2A /* GAM730-MVP */ = {
 			isa = PBXGroup;
 			children = (
+				1805843324EEB60D002B5FB7 /* FirebaseListener.swift */,
 				18429F8024CF10FA00955B2A /* AppDelegate.swift */,
 				18429F8224CF10FA00955B2A /* SceneDelegate.swift */,
 				18429F8424CF10FA00955B2A /* ViewController.swift */,
 				187F13AB24D86C2400529089 /* LoginController.swift */,
+				1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */,
 				187EC15324D9D8AE00CDEE9A /* SignUpController.swift */,
+				18DA056924E1814B0044D618 /* FirebaseUser.swift */,
+				18DA056B24E193160044D618 /* Constants.swift */,
 				18429F8624CF10FA00955B2A /* Main.storyboard */,
 				18429F8924CF10FA00955B2A /* Assets.xcassets */,
 				18429F8B24CF10FA00955B2A /* LaunchScreen.storyboard */,
@@ -216,11 +228,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1805843224EEAB72002B5FB7 /* FirebaseCollectionReference.swift in Sources */,
 				187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */,
 				18429F8524CF10FA00955B2A /* ViewController.swift in Sources */,
 				18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */,
+				1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */,
 				18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */,
+				18DA056C24E193160044D618 /* Constants.swift in Sources */,
 				187F13AC24D86C2400529089 /* LoginController.swift in Sources */,
+				18DA056A24E1814B0044D618 /* FirebaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

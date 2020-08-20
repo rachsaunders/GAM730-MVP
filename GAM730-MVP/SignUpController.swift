@@ -51,7 +51,15 @@ class SignUpController: UIViewController {
     @IBAction func signUpButtonPressed(_ sender: Any) {
         
         if isTextDataInputed(){
+            
+            // check passwords match
+            if passwordTextField.text! == confirmPasswordTextField.text! {
+                
             registerUser()
+            } else {
+                 ProgressHUD.showError("Passwords don't match")
+                
+            }
         } else {
             ProgressHUD.showError("Please fill all info")
         }
@@ -103,6 +111,25 @@ class SignUpController: UIViewController {
     // MARK: - Register The User
     
     private func registerUser() {
+        
+        ProgressHUD.show()
+        
+        FirebaseUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, fullName: fullNameTextField.text!, country: countryTextField.text!, isMan: isMan, dateOfBirth: Date(), completion:  {
+            error in
+            
+            if error == nil {
+                ProgressHUD.showSuccess("Verification email sent!")
+                
+                // the below dismisses the signup controller when user has signed up
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                ProgressHUD.showError(error!.localizedDescription)
+            }
+            
+            
+            
+            
+        })
         
     }
     
