@@ -56,12 +56,17 @@ class LoginController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         
         if emailTextField.text != "" && passwordTextField.text != "" {
+            
+            ProgressHUD.show()
+            
             FirebaseUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error, isEmailVerified) in
                 
                 if error != nil {
                     ProgressHUD.showError(error!.localizedDescription)
                 } else if isEmailVerified {
+                    ProgressHUD.dismiss()
                     print("go to app yay")
+                    self.goToApp()
                     // enter the application
                 } else {
                     ProgressHUD.showError("Please verify email")
@@ -97,6 +102,13 @@ class LoginController: UIViewController {
         
     }
     
+   // MARK: - Navigation
+    
+    private func goToApp() {
+        //        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController(identifier: "MainView") as! UIViewController
+      //  mainView.modalPresentationStyle = .fullScreen
+       // self.present(mainView, animated: true, completion: nil)
+    }
     
     
     

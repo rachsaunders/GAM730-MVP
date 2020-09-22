@@ -34,6 +34,7 @@ class SignUpController: UIViewController {
     
     // Man, Woman, NonBinary
     var isMan = true
+    var datePicker = UIDatePicker()
     
     //MARK: - ViewLifeCycle
        
@@ -43,6 +44,7 @@ class SignUpController: UIViewController {
         overrideUserInterfaceStyle = .dark
 
         setupBackgroundTouch()
+        setupDatePicker()
         
        }
     
@@ -80,6 +82,31 @@ class SignUpController: UIViewController {
     }
     
     //MARK: - Setup
+    
+    // change the date of birth to a date picker
+    private func setupDatePicker() {
+        
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+        dateOfBirthTextField.inputView = datePicker
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor().primary()
+        toolBar.sizeToFit()
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClicked))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        
+        dateOfBirthTextField.inputAccessoryView = toolBar
+    }
       
       // Need to set this background touch so that the keyboard can be coded to disappear when user stops typing
       private func setupBackgroundTouch() {
@@ -97,10 +124,18 @@ class SignUpController: UIViewController {
       
       //MARK: - Helpers
       
-      private func dismissKeyboard() {
+      @objc func dismissKeyboard() {
           self.view.endEditing(false)
           
       }
+    
+    @objc func handleDatePicker() {
+        
+    }
+    
+    @objc func doneClicked() {
+        
+    }
     
     // check the user has inputted all their data
     private func isTextDataInputed() -> Bool {
