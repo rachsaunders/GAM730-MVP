@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Gallery
+import ProgressHUD
 
 class ProfileTableViewController: UITableViewController {
     
@@ -41,6 +43,11 @@ class ProfileTableViewController: UITableViewController {
     
     var editingMode = false
     
+    var uploadingAvatar = true
+    
+    var avatarImage: UIImage?
+    
+    var gallery: GalleryController!
     
     // View Life Cycle
     
@@ -91,7 +98,40 @@ class ProfileTableViewController: UITableViewController {
     
     @objc func editUserData() {
         
+        let user = FirebaseUser.currentUser()!
         
+        // see note 36
+        user.about = aboutMeTextView.text
+        user.jobTitle = jobTextField.text ?? ""
+        user.profession = professionTextField ?? ""
+        user.isMan = genderTextField.text == "Male"
+        user.country = countryTextField.text ?? ""
+        user.lookingFor = lookingForTextField ?? ""
+        
+        if avatarImage != nil {
+            
+            // upload an image
+            // save user
+           // saveUserData(user: user)
+            
+        } else {
+            
+            // save
+            saveUserData(user: user)
+            
+        }
+        
+        editingMode = false
+        updateEditingMode()
+        showSaveButton()
+        loadUserData()
+        
+    }
+    
+    private func saveUserData(user: FirebaseUser) {
+        
+        user.saveUserLocally()
+        user.saveUserToFireStore()
         
     }
     
@@ -165,6 +205,23 @@ class ProfileTableViewController: UITableViewController {
         self.view.endEditing(false)
     }
     
+    //MARK: - Gallery
+    
+    private func showGallery(forAvatar: Bool) {
+        
+        uploadingAvatar = forAvatar
+        
+        self.gallery = GalleryController()
+        self.gallery.delegate = self
+        Config.tabsToShow = [.imageTab, .cameraTab]
+        Config.Camera.imageLimit = forAvatar ? 1 : 10
+        Config.initialTab = .imageTab
+        
+        self.present(gallery, animated: true, completion: nil)
+        
+        
+    }
+    
     
     // Alert Controller
     
@@ -174,14 +231,14 @@ class ProfileTableViewController: UITableViewController {
         
         alertController.addAction(UIAlertAction(title: "Change Avatar", style: .default, handler: { (alert) in
             
-            print("changing the picture options is working")
+            self.showGallery(forAvatar: true)
             
             
         }))
         
         alertController.addAction(UIAlertAction(title: "Upload Pictures", style: .default, handler: { (alert) in
                  
-                 print("uploading the picture options is working")
+                    self.showGallery(forAvatar: true)
                  
                  
              }))
@@ -223,4 +280,49 @@ class ProfileTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
         
     }
+}
+
+
+extension ProfileTableViewController: GalleryControllerDelegate {
+    func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
+        
+        if images.count > 0 {
+            if uploadingAvatar {
+                images.first!.resolve { (icon) in
+                    if icon != nil {
+                        self.editingMode = true
+                        self.showSaveButton()
+                        self.avatarImageView.image = icon
+                        self.avatarImage = icon
+                    
+                    } else {
+                        ProgressHUD.showError("Couldn't select Image!")
+                    }
+                    
+                }
+            } else {
+                
+                print("multiple images works")
+                
+            }
+        }
+        
+         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
+         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryControllerDidCancel(_ controller: GalleryController) {
+         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
 }
