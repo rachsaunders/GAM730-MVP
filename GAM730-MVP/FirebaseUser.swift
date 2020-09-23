@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import UIKit
 
+
 class FirebaseUser: Equatable {
     
     
@@ -147,6 +148,27 @@ class FirebaseUser: Equatable {
     
     
     // email, password, fullName, country, isMan, dateOfBirth, completion
+    
+    //MARK: - added 23/09/2020
+    // MARK: - Return current user
+    
+    class func currentId() -> String {
+        
+        return Auth.auth().currentUser!.uid
+        
+    }
+    
+    class func currentUser() -> FirebaseUser? {
+        
+        if Auth.auth().currentUser != nil {
+            if let userDictionary = userDefaults.object(forKey: kCURRENTUSER) {
+                return FirebaseUser(_dictionary: userDictionary as! NSDictionary)
+            }
+        }
+        
+        return nil
+        
+    }
     
     //MARK: - Login
     
