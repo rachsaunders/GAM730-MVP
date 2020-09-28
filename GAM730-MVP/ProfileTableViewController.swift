@@ -103,28 +103,35 @@ class ProfileTableViewController: UITableViewController {
         // see note 36
         user.about = aboutMeTextView.text
         user.jobTitle = jobTextField.text ?? ""
-        user.profession = professionTextField ?? ""
+        user.profession = professionTextField.text ?? ""
         user.isMan = genderTextField.text == "Male"
         user.country = countryTextField.text ?? ""
-        user.lookingFor = lookingForTextField ?? ""
+        user.lookingFor = lookingForTextField.text ?? ""
         
         if avatarImage != nil {
             
-            // upload an image
-            // save user
-           // saveUserData(user: user)
+            uploadAvatar(avatarImage!) { (avatarLink) in
+                
+                user.avatarLink = avatarLink ?? ""
+                user.avatar = self.avatarImage
+                
+                self.saveUserData(user: user)
+                self.loadUserData()
+                
+            }
             
         } else {
             
             // save
             saveUserData(user: user)
+            loadUserData()
             
         }
         
         editingMode = false
         updateEditingMode()
         showSaveButton()
-        loadUserData()
+        
         
     }
     
@@ -159,8 +166,14 @@ class ProfileTableViewController: UITableViewController {
     // MARK:- LoadUserData
     
     private func loadUserData() {
+        
+        
        
         let currentUser = FirebaseUser.currentUser()!
+        
+        FileStorage.downloadImage(imageUrl: currentUser.avatarLink) {
+            (image) in 
+        }
         
         nameAgeLabel.text = currentUser.fullName + ", \(abs(currentUser.dateOfBirth.interval(ofComponent: .year, fromDate: Date())))"
         
@@ -177,8 +190,11 @@ class ProfileTableViewController: UITableViewController {
         
         // changed the below from avatarImageView to avatarImage due to an error
         avatarImage.image = UIImage(named: "avatar")
+    
         
         // TO DO SEE POSTIT NOTE IN PINK 34 and maybe 35
+        
+        avatarImageView.image = currentUser.avatar
         
     }
     
@@ -203,6 +219,42 @@ class ProfileTableViewController: UITableViewController {
     private func hideKeyboard() {
         
         self.view.endEditing(false)
+    }
+    
+    //MARK: - FileStorage
+    
+    private func uploadAvatar(_ image: UIImage, completion: @escaping (_ avatarLink: String?) -> Void) {
+        
+        ProgressHUD.show()
+        
+        let fileDirectory = "Avatars/_" + FirebaseUser.currentId() + ".jpg"
+        
+        FileStorage.uploadImage(image, directory: fileDirectory) { (avatarLink) in
+            
+            ProgressHUD.dismiss()
+            
+            FileStorage.saveImagelocally(imageData: image.jpegData(compressionQuality: 0.8)! as NSData, fileName: FirebaseUser.currentId())
+            
+            completion(avatarLink)
+            
+        }
+        
+    }
+    
+    private func uploadImages(images: [UIImage?]) {
+        ProgressHUD.show()
+        
+        FileStorage.uploadImages(images) { (imageLinks) in
+            
+            ProgressHUD.dismiss()
+            
+            let currentUser = FirebaseUser.currentUser()!
+            
+            currentUser.imageLinks = imageLinks
+            
+            self.saveUserData(user: currentUser)
+        }
+        
     }
     
     //MARK: - Gallery
@@ -302,7 +354,11 @@ extension ProfileTableViewController: GalleryControllerDelegate {
                 }
             } else {
                 
-                print("multiple images works")
+                Image.resolve(images: images) { (resolvedImages) in
+                    
+                    
+                    
+                }
                 
             }
         }

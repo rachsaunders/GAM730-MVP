@@ -9,6 +9,11 @@
 import Foundation
 
 public let userDefaults = UserDefaults.standard
+
+public let kFILEREFERENCE = "gs://gam730-mvp.appspot.com"
+
+
+
 // FirebaseUser
 
 public let kOBJECTID = "objectId"

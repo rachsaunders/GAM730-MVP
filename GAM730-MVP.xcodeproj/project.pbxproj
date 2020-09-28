@@ -10,6 +10,7 @@
 		1805843224EEAB72002B5FB7 /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */; };
 		1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805843324EEB60D002B5FB7 /* FirebaseListener.swift */; };
 		180C023B25190678001A8475 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C023A25190678001A8475 /* ProfileTableViewController.swift */; };
+		18153EBA251B96C000B7B670 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18153EB9251B96C000B7B670 /* FileStorage.swift */; };
 		18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8024CF10FA00955B2A /* AppDelegate.swift */; };
 		18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8224CF10FA00955B2A /* SceneDelegate.swift */; };
 		18429F8524CF10FA00955B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8424CF10FA00955B2A /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
 		1805843324EEB60D002B5FB7 /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
 		180C023A25190678001A8475 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		18153EB9251B96C000B7B670 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		18429F7D24CF10FA00955B2A /* GAM730-MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GAM730-MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18429F8024CF10FA00955B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18429F8224CF10FA00955B2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				18429F8024CF10FA00955B2A /* AppDelegate.swift */,
 				18429F8224CF10FA00955B2A /* SceneDelegate.swift */,
 				180C023A25190678001A8475 /* ProfileTableViewController.swift */,
+				18153EB9251B96C000B7B670 /* FileStorage.swift */,
 				18429F8424CF10FA00955B2A /* ViewController.swift */,
 				187F13AB24D86C2400529089 /* LoginController.swift */,
 				1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */,
@@ -239,6 +242,7 @@
 				18429F8524CF10FA00955B2A /* ViewController.swift in Sources */,
 				18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */,
 				1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */,
+				18153EBA251B96C000B7B670 /* FileStorage.swift in Sources */,
 				188DC03624F305D300768AF6 /* Extensions.swift in Sources */,
 				18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */,
 				18DA056C24E193160044D618 /* Constants.swift in Sources */,

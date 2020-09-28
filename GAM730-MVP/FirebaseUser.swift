@@ -93,9 +93,16 @@ class FirebaseUser: Equatable {
                       kREGISTEREDDATE as NSCopying,
                       kPUSHID as NSCopying,
                    
-                      // will this get rid of the error who knows im so tired
-                // it works yay!
-                 //    kCURRENTUSER as NSCopying,
+    // will this get rid of the error who knows im so tired
+    // it works yay!
+                 
+                
+                
+                
+                
+                
+                
+                //    kCURRENTUSER as NSCopying,
                       
                       
                       
@@ -144,6 +151,17 @@ class FirebaseUser: Equatable {
         likedIdArray = _dictionary[kLINKEDIDARRAY] as? [String]
         imageLinks = _dictionary[kIMAGELINKS] as? [String]
         
+        // added the below to fix error
+        pushId = _dictionary[kPUSHID] as? String ?? ""
+        
+        // need to upload a default avatar image calle Placeholder
+
+        // change to genders next time
+        let placeHolder = isMan ? "Placeholder" : "Placeholder"
+        
+        avatar =  UIImage(contentsOfFile: fileInDocumentsDiretory(filename: self.objectId  )) ?? UIImage(named: placeHolder)
+        
+        
     }
     
     
@@ -169,6 +187,19 @@ class FirebaseUser: Equatable {
         return nil
         
     }
+    
+    func getUserAvatarFromFireStore(completion: @escaping (_ didSet: Bool) -> Void) {
+        
+        FileStorage.downloadImage(imageUrl: self.avatarLink) { (avatarImage) in
+        
+        let placeholder = self.isMan ? "Placeholder" : "Placeholder"
+            self.avatar = avatarImage ?? UIImage(named: placeholder)
+            
+            completion(true)
+    }
+    }
+        
+        
     
     //MARK: - Login
     
