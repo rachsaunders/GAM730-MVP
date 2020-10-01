@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1609" y="-635"/>
+            <point key="canvasLocation" x="-2939" y="-1023"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="e7H-Se-yVp">
@@ -214,12 +214,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQU-kE-GzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-868" y="-1010"/>
+            <point key="canvasLocation" x="-1706" y="-606"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="iik-Zx-hSY">
             <objects>
-                <viewController id="wEg-Hg-gFy" sceneMemberID="viewController">
+                <viewController id="wEg-Hg-gFy" customClass="CardViewController" customModule="GAM730_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2EU-xK-Bg4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbe-q7-Rak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2585" y="-855"/>
+            <point key="canvasLocation" x="2501" y="-1215"/>
         </scene>
         <!--Title-->
         <scene sceneID="NIn-l1-eLD">
@@ -267,8 +267,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="City, country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Zc-DO-Wej">
-                                                            <rect key="frame" x="8" y="299.5" width="398" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Zc-DO-Wej">
+                                                            <rect key="frame" x="165" y="299.5" width="84.5" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Onf-Yb-ktk"/>
                                                             </constraints>
@@ -290,7 +290,7 @@
                                                                 <action selector="cameraButtonPressed:" destination="fbx-zI-j9t" eventType="touchUpInside" id="f1G-L9-plH"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnD-u1-9DY">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnD-u1-9DY">
                                                             <rect key="frame" x="241" y="406" width="21" height="22"/>
                                                             <state key="normal" image="square.and.pencil" catalog="system"/>
                                                             <connections>
@@ -298,8 +298,8 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="0Zc-DO-Wej" firstAttribute="centerX" secondItem="W08-61-Ype" secondAttribute="centerX" id="2Lk-wB-GWG"/>
                                                         <constraint firstAttribute="bottom" secondItem="gcj-Sj-9lu" secondAttribute="bottom" constant="20" id="5jJ-1k-Fla"/>
                                                         <constraint firstAttribute="trailing" secondItem="rXr-wS-jiJ" secondAttribute="trailing" constant="8" id="5q7-XA-xWw"/>
                                                         <constraint firstItem="0Zc-DO-Wej" firstAttribute="top" secondItem="rXr-wS-jiJ" secondAttribute="bottom" constant="2" id="9S2-1k-1OJ"/>
@@ -309,6 +309,7 @@
                                                         <constraint firstItem="rXr-wS-jiJ" firstAttribute="top" secondItem="T2Z-Zu-f5f" secondAttribute="bottom" constant="8" id="Yh3-pW-nco"/>
                                                         <constraint firstItem="rXr-wS-jiJ" firstAttribute="leading" secondItem="W08-61-Ype" secondAttribute="leading" constant="8" id="buL-as-Bjf"/>
                                                         <constraint firstItem="gcj-Sj-9lu" firstAttribute="leading" secondItem="m1z-8y-CJv" secondAttribute="trailing" constant="20" id="enC-zH-aBW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="VnD-u1-9DY" secondAttribute="trailing" constant="152" id="k7Z-sy-nzz"/>
                                                         <constraint firstItem="VnD-u1-9DY" firstAttribute="centerY" secondItem="gcj-Sj-9lu" secondAttribute="centerY" id="lQ9-sI-o3f"/>
                                                         <constraint firstItem="T2Z-Zu-f5f" firstAttribute="top" secondItem="W08-61-Ype" secondAttribute="top" constant="60" id="nxV-ou-J8k"/>
                                                     </constraints>
@@ -549,12 +550,12 @@
                             <outlet property="delegate" destination="fbx-zI-j9t" id="eSi-Zc-Yu6"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="ySs-MG-TiB"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="person.crop.circle" catalog="system" id="ySs-MG-TiB"/>
                     <navigationItem key="navigationItem" title="Title" id="uge-BJ-IBO"/>
                     <connections>
                         <outlet property="aboutMeTextView" destination="rOd-Lr-agc" id="2ff-hz-qKX"/>
                         <outlet property="aboutMeView" destination="Qzc-gw-Wxj" id="jbi-vM-vVM"/>
-                        <outlet property="avatarImage" destination="T2Z-Zu-f5f" id="6uu-yP-wpx"/>
+                        <outlet property="avatarImageView" destination="T2Z-Zu-f5f" id="6uu-yP-wpx"/>
                         <outlet property="cityCountryLabel" destination="0Zc-DO-Wej" id="BDP-Md-A23"/>
                         <outlet property="countryTextField" destination="jH0-U2-pSS" id="5k0-Sr-uee"/>
                         <outlet property="genderTextField" destination="ujZ-ds-Syc" id="lnD-5Z-UJh"/>
@@ -567,9 +568,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqv-3U-IpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907.24637681159425" y="-296.65178571428572"/>
+            <point key="canvasLocation" x="1467" y="-489"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="AKn-h1-qCf">
             <objects>
                 <viewController id="FdQ-2k-upW" sceneMemberID="viewController">
@@ -579,11 +580,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="tvn-cb-Ke3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="mJ3-RW-DtH"/>
+                    <tabBarItem key="tabBarItem" title="" image="smiley" catalog="system" id="mJ3-RW-DtH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lv1-Lg-kth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="-1024"/>
+            <point key="canvasLocation" x="1467" y="-1265"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jK8-vo-iio">
@@ -604,7 +605,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7NO-A9-dPk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="-1102"/>
+            <point key="canvasLocation" x="365" y="-1023"/>
         </scene>
         <!--Item-->
         <scene sceneID="glq-cz-h7L">
@@ -620,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEN-m0-QFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="-295"/>
+            <point key="canvasLocation" x="5254" y="-441"/>
         </scene>
         <!--Item-->
         <scene sceneID="gGi-SX-gWD">
@@ -636,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKM-LD-rI7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2711" y="-30"/>
+            <point key="canvasLocation" x="4342" y="-149"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="Sj9-ge-rEf">
@@ -751,7 +752,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PpF-y0-ruu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-868" y="-307"/>
+            <point key="canvasLocation" x="-1546" y="-1329"/>
         </scene>
     </scenes>
     <resources>
@@ -762,6 +763,7 @@
         <image name="backgroundExample" width="512" height="874"/>
         <image name="gallery_permission_view_camera.png" width="26" height="26"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+        <image name="smiley" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
     </resources>

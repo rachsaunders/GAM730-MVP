@@ -10,6 +10,12 @@
 		1805843224EEAB72002B5FB7 /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */; };
 		1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805843324EEB60D002B5FB7 /* FirebaseListener.swift */; };
 		180C023B25190678001A8475 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C023A25190678001A8475 /* ProfileTableViewController.swift */; };
+		180C763A2526275B002BC122 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C76392526275B002BC122 /* CardViewController.swift */; };
+		180C763C25262963002BC122 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C763B25262963002BC122 /* UserCard.swift */; };
+		180C763E25262DDB002BC122 /* UserCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C763D25262DDB002BC122 /* UserCardModel.swift */; };
+		180C76402526319F002BC122 /* UserCardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C763F2526319F002BC122 /* UserCardOverlay.swift */; };
+		180C764225263CE1002BC122 /* UserCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C764125263CE1002BC122 /* UserCardContentView.swift */; };
+		180C764425263EC5002BC122 /* UserCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C764325263EC5002BC122 /* UserCardFooterView.swift */; };
 		18153EBA251B96C000B7B670 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18153EB9251B96C000B7B670 /* FileStorage.swift */; };
 		18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8024CF10FA00955B2A /* AppDelegate.swift */; };
 		18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18429F8224CF10FA00955B2A /* SceneDelegate.swift */; };
@@ -30,6 +36,12 @@
 		1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
 		1805843324EEB60D002B5FB7 /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
 		180C023A25190678001A8475 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		180C76392526275B002BC122 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		180C763B25262963002BC122 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		180C763D25262DDB002BC122 /* UserCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardModel.swift; sourceTree = "<group>"; };
+		180C763F2526319F002BC122 /* UserCardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardOverlay.swift; sourceTree = "<group>"; };
+		180C764125263CE1002BC122 /* UserCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardContentView.swift; sourceTree = "<group>"; };
+		180C764325263EC5002BC122 /* UserCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardFooterView.swift; sourceTree = "<group>"; };
 		18153EB9251B96C000B7B670 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		18429F7D24CF10FA00955B2A /* GAM730-MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GAM730-MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18429F8024CF10FA00955B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,8 +115,14 @@
 				187EC15324D9D8AE00CDEE9A /* SignUpController.swift */,
 				188DC03524F305D300768AF6 /* Extensions.swift */,
 				18DA056924E1814B0044D618 /* FirebaseUser.swift */,
+				180C763B25262963002BC122 /* UserCard.swift */,
+				180C763D25262DDB002BC122 /* UserCardModel.swift */,
+				180C763F2526319F002BC122 /* UserCardOverlay.swift */,
+				180C764125263CE1002BC122 /* UserCardContentView.swift */,
+				180C764325263EC5002BC122 /* UserCardFooterView.swift */,
 				18DA056B24E193160044D618 /* Constants.swift */,
 				18429F8624CF10FA00955B2A /* Main.storyboard */,
+				180C76392526275B002BC122 /* CardViewController.swift */,
 				18429F8924CF10FA00955B2A /* Assets.xcassets */,
 				18429F8B24CF10FA00955B2A /* LaunchScreen.storyboard */,
 				18429F8E24CF10FA00955B2A /* Info.plist */,
@@ -239,15 +257,21 @@
 			files = (
 				1805843224EEAB72002B5FB7 /* FirebaseCollectionReference.swift in Sources */,
 				187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */,
+				180C763E25262DDB002BC122 /* UserCardModel.swift in Sources */,
 				18429F8524CF10FA00955B2A /* ViewController.swift in Sources */,
 				18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */,
 				1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */,
+				180C764425263EC5002BC122 /* UserCardFooterView.swift in Sources */,
 				18153EBA251B96C000B7B670 /* FileStorage.swift in Sources */,
 				188DC03624F305D300768AF6 /* Extensions.swift in Sources */,
 				18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */,
 				18DA056C24E193160044D618 /* Constants.swift in Sources */,
 				187F13AC24D86C2400529089 /* LoginController.swift in Sources */,
+				180C76402526319F002BC122 /* UserCardOverlay.swift in Sources */,
+				180C764225263CE1002BC122 /* UserCardContentView.swift in Sources */,
+				180C763A2526275B002BC122 /* CardViewController.swift in Sources */,
 				180C023B25190678001A8475 /* ProfileTableViewController.swift in Sources */,
+				180C763C25262963002BC122 /* UserCard.swift in Sources */,
 				18DA056A24E1814B0044D618 /* FirebaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

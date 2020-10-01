@@ -17,7 +17,7 @@ class ProfileTableViewController: UITableViewController {
     
     
     
-    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var profileCellBackgroundView: UIView!
     
@@ -102,7 +102,7 @@ class ProfileTableViewController: UITableViewController {
         
         // see note 36
         user.about = aboutMeTextView.text
-        user.jobTitle = jobTextField.text ?? ""
+     //   user.jobTitle = jobTextField.text ?? ""
         user.profession = professionTextField.text ?? ""
         user.isMan = genderTextField.text == "Male"
         user.country = countryTextField.text ?? ""
@@ -189,7 +189,7 @@ class ProfileTableViewController: UITableViewController {
         
         
         // changed the below from avatarImageView to avatarImage due to an error
-        avatarImage.image = UIImage(named: "avatar")
+        avatarImageView.image = UIImage(named: "avatar")
     
         
         // TO DO SEE POSTIT NOTE IN PINK 34 and maybe 35
