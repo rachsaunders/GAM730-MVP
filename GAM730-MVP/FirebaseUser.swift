@@ -316,7 +316,7 @@ func createUsers() {
         
         let id = UUID().uuidString
         
-        let fileDirectory = "Avatars/_" + FirebaseUser.currentId() + ".jpg"
+        let fileDirectory = "Avatars/_" + id + ".jpg"
         
         FileStorage.uploadImage(UIImage(named: "user\(imageIndex)")!, directory: fileDirectory) { (avatarLink) in
         

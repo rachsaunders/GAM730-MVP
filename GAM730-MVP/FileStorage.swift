@@ -45,8 +45,10 @@ class FileStorage {
         })
     }
     
+    //changed the imagelinks below to imageLinks 
     
-    class func uploadImages(_ images: [UIImage?], completion: @escaping (_ imagelinks: [String]) -> Void) {
+    
+    class func uploadImages(_ images: [UIImage?], completion: @escaping (_ imageLinks: [String]) -> Void) {
         
         var uploadImagesCount = 0
         var imageLinkArray : [String] = []
