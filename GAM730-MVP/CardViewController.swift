@@ -39,6 +39,8 @@ class CardViewController: UIViewController {
         
     }
     
+    // everything is fine to this point
+    
     
     //MARK: - LAYOUT CARDS
     private func layoutCardStackView() {
@@ -50,6 +52,8 @@ class CardViewController: UIViewController {
         
         cardStack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor)
     }
+    
+    // everything is fine to this point
     
     //MARK: -  Download Users
     
@@ -64,6 +68,9 @@ class CardViewController: UIViewController {
                 ProgressHUD.dismiss()
             }
             
+            
+            // there is a closed bracket missing somewhere around here...
+            
             self.lastDocumentSnapshot = snapshot
             self.isInitialLoad = false
             self.initialCardModels = []
@@ -72,7 +79,7 @@ class CardViewController: UIViewController {
             
             for user in allUsers {
                 
-                    user.getUserAvatarFromFireStore { (didSet) in
+                user.getUserAvatarFromFireStore { (didSet) in
                     
                     let cardModel = UserCardModel(id: user.objectId, name: user.fullName, age: abs(user.dateOfBirth.interval(ofComponent: .year, fromDate: Date())), occupation: user.profession, image: user.avatar)
                     
@@ -88,20 +95,22 @@ class CardViewController: UIViewController {
                             self.layoutCardStackView()
                             
                         }
+                        }
                     }
+                
+                print("initial user counts recieved")
+                self.downloadMoreUsersInBackground()
+                
                 }
             }
             
-            print("initial user counts recieved")
-            self.downloadMoreUsersInBackground()
-            
         }
         
-    }
     
+
     
     private func downloadMoreUsersInBackground() {
-        FirebaseListener.shared.downloadUsersFromFirebase(isInitialLoad: isInitialLoad, limit: 1000, lastDocumentSnapshot: lastDocumentSnapshot) { (allUsers, snapshot} in
+        FirebaseListener.shared.downloadUsersFromFirebase(isInitialLoad: isInitialLoad, limit: 1000, lastDocumentSnapshot: lastDocumentSnapshot) { (allUsers, snapshot) in
         
         self.lastDocumentSnapshot = snapshot
         self.secondCardModel = []
@@ -109,7 +118,7 @@ class CardViewController: UIViewController {
         self.userObjects += allUsers
         
         for user in allUsers {
-            user.getUserAvatarFromFirestore { (didSet) in
+            user.getUserAvatarFromFireStore { (didSet) in
                 
                 let cardModel = UserCardModel(id: user.objectId, name: user.fullName, age: abs(user.dateOfBirth.interval(ofComponent: .year, fromDate: Date())), occupation: user.profession, image: user.avatar)
                 
@@ -120,6 +129,11 @@ class CardViewController: UIViewController {
     }
 
 }
+
+}
+
+// // // // // // // // EXTENSION // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
+
 
 extension CardViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
     
@@ -168,3 +182,4 @@ extension CardViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
     }
     
 }
+
