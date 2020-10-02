@@ -245,7 +245,7 @@ class FirebaseUser: Equatable {
             if error == nil {
                 
                 authData!.user.sendEmailVerification { (error) in
-                    print("auth email verification sent", error?.localizedDescription)
+                    print("auth email verification sent")
                 }
                 
                 if authData?.user != nil {
@@ -306,6 +306,7 @@ class FirebaseUser: Equatable {
 func createUsers() {
     
     let names = ["Pippin", "Eddie", "Georgie"]
+    
     
     var imageIndex = 1
     var userIndex = 1
