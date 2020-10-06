@@ -26,9 +26,26 @@ public let kPROFESSION = "profession"
 public let kABOUT = "about"
 public let kLOOKINGFOR = "lookingFor"
 public let kAVATARLINK = "avatarLink"
-public let kLINKEDIDARRAY = "linkedIdArray"
+public let kLIKEDIDARRAY = "likedIdArray"
 public let kIMAGELINKS = "imageLinks"
 public let kREGISTEREDDATE = "registeredDate"
 public let kPUSHID = "pushId"
 
 public let kCURRENTUSER = "currentUser"
+
+//MARK: - Match
+public let kUSERID = "userId"
+public let kDATE = "date"
+public let kLIKEDUSERID = "likedUserId"
+public let kMEMBERIDS = "memberIds"
+
+
+//MARK: - Recents
+public let kCHATROOMID = "chatRoomId"
+public let kSENDERID = "senderId"
+public let kSENDERNAME = "senderName"
+public let kRECEIVERID = "receinverId"
+public let kRECEIVERNAME = "receiverName"
+public let kLASTMESSAGE = "lastMessage"
+public let kUNREADCOUNTER = "unreadCounter"
+

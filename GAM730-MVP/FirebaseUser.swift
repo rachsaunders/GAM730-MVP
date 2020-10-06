@@ -8,7 +8,6 @@
 
 import Foundation
 import Firebase
-import FirebaseAuth
 import UIKit
 
 
@@ -87,7 +86,7 @@ class FirebaseUser: Equatable {
                       kLOOKINGFOR as NSCopying,
                       kAVATARLINK as NSCopying,
                       
-                      kLINKEDIDARRAY as NSCopying,
+                      kLIKEDIDARRAY as NSCopying,
                       kIMAGELINKS as NSCopying,
                       
                       kREGISTEREDDATE as NSCopying,
@@ -136,6 +135,7 @@ class FirebaseUser: Equatable {
         email = _dictionary[kEMAIL] as? String ?? ""
         fullName = _dictionary[kFULLNAME] as? String ?? ""
         
+        
         if let date = _dictionary[kDATEOFBIRTH] as? Timestamp {
             dateOfBirth = date.dateValue()
         } else {
@@ -148,7 +148,7 @@ class FirebaseUser: Equatable {
         country = _dictionary[kCOUNTRY] as? String ?? ""
         lookingFor = _dictionary[kLOOKINGFOR] as? String ?? ""
         avatarLink = _dictionary[kAVATARLINK] as? String ?? ""
-        likedIdArray = _dictionary[kLINKEDIDARRAY] as? [String]
+        likedIdArray = _dictionary[kLIKEDIDARRAY] as? [String]
         imageLinks = _dictionary[kIMAGELINKS] as? [String]
         
         // added the below to fix error
@@ -159,7 +159,9 @@ class FirebaseUser: Equatable {
         // change to genders next time
         let placeHolder = isMan ? "Placeholder" : "Placeholder"
         
-        avatar =  UIImage(contentsOfFile: fileInDocumentsDiretory(filename: self.objectId  )) ?? UIImage(named: placeHolder)
+        
+        
+        avatar =  UIImage(contentsOfFile: fileInDocumentsDirectory(filename: self.objectId)) ?? UIImage(named: placeHolder)
         
         
     }
@@ -168,12 +170,10 @@ class FirebaseUser: Equatable {
     // email, password, fullName, country, isMan, dateOfBirth, completion
     
     //MARK: - added 23/09/2020
-    // MARK: - Return current user
+    //MARK: - Returning current user
     
     class func currentId() -> String {
-        
         return Auth.auth().currentUser!.uid
-        
     }
     
     class func currentUser() -> FirebaseUser? {
@@ -185,20 +185,21 @@ class FirebaseUser: Equatable {
         }
         
         return nil
-        
     }
+
     
-    func getUserAvatarFromFireStore(completion: @escaping (_ didSet: Bool) -> Void) {
+    func getUserAvatarFromFirestore(completion: @escaping (_ didSet: Bool) -> Void) {
         
         FileStorage.downloadImage(imageUrl: self.avatarLink) { (avatarImage) in
-        
-        let placeholder = self.isMan ? "Placeholder" : "Placeholder"
+            
+            let placeholder = self.isMan ? "mPlaceholder" : "fPlaceholder"
             self.avatar = avatarImage ?? UIImage(named: placeholder)
             
             completion(true)
-    }
-    }
+        }
         
+    }
+    
         
     
     //MARK: - Login
@@ -261,7 +262,35 @@ class FirebaseUser: Equatable {
         
     }
     
+    
+    //MARK: - Edit User profile
+    
+    func updateUserEmail(newEmail: String, completion: @escaping (_ error: Error?) -> Void) {
+        
+        Auth.auth().currentUser?.updateEmail(to: newEmail, completion: { (error) in
+            
+            FirebaseUser.resendVerificationEmail(email: newEmail) { (error) in
+
+            }
+            completion(error)
+        })
+    }
+
+    
+    
+    
     //MARK: - Resend Links
+    
+    class func resendVerificationEmail(email: String, completion: @escaping (_ error: Error?) -> Void) {
+        
+        Auth.auth().currentUser?.reload(completion: { (error) in
+            
+            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                
+                completion(error)
+            })
+        })
+    }
     
     class func resetPasswordFor(email: String, completion: @escaping (_ error: Error?) -> Void) {
         
@@ -277,6 +306,29 @@ class FirebaseUser: Equatable {
         
     }
     
+    class func resetPassword(email: String, completion: @escaping (_ error: Error?) -> Void) {
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            completion(error)
+        }
+    }
+    
+    //MARK: - LogOut user
+    
+    class func logOutCurrentUser(completion: @escaping(_ error: Error?) ->Void) {
+        
+        do {
+            try Auth.auth().signOut()
+            
+            userDefaults.removeObject(forKey: kCURRENTUSER)
+            userDefaults.synchronize()
+            completion(nil)
+
+        } catch let error as NSError {
+            completion(error)
+        }
+    }
+
     //MARK: - Save user Functions
     
     func saveUserLocally() {
@@ -298,6 +350,27 @@ class FirebaseUser: Equatable {
     
     }
     
+    //MARK: - Update User funcs
+    
+    func updateCurrentUserInFireStore(withValues: [String : Any], completion: @escaping (_ error: Error?) -> Void) {
+        
+        if let dictionary = userDefaults.object(forKey: kCURRENTUSER) {
+            
+            let userObject = (dictionary as! NSDictionary).mutableCopy() as! NSMutableDictionary
+            userObject.setValuesForKeys(withValues)
+            
+            FirebaseReference(.User).document(FirebaseUser.currentId()).updateData(withValues) {
+                error in
+                
+                completion(error)
+                if error == nil {
+                    FirebaseUser(_dictionary: userObject).saveUserLocally()
+                }
+            }
+        }
+    }
+
+    
 }
 
 // dummy test users
@@ -305,7 +378,7 @@ class FirebaseUser: Equatable {
 
 func createUsers() {
     
-    let names = ["Pippin", "Eddie", "Georgie"]
+    let names = ["Tom Saunders", "Example Name"]
     
     
     var imageIndex = 1
@@ -319,6 +392,7 @@ func createUsers() {
         let fileDirectory = "Avatars/_" + id + ".jpg"
         
         FileStorage.uploadImage(UIImage(named: "user\(imageIndex)")!, directory: fileDirectory) { (avatarLink) in
+      
         
             let user = FirebaseUser(_objectID: id, _email: "user\(userIndex)@mail.com", _fullName: names[i], _country: "No Country", _dateOfBirth: Date(), _isMan: isMan, _avatarLink: avatarLink ?? "")
             
@@ -337,3 +411,4 @@ func createUsers() {
     }
     
 }
+

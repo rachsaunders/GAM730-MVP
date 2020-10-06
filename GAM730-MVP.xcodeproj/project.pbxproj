@@ -24,11 +24,24 @@
 		18429F8A24CF10FA00955B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18429F8924CF10FA00955B2A /* Assets.xcassets */; };
 		18429F8D24CF10FA00955B2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18429F8B24CF10FA00955B2A /* LaunchScreen.storyboard */; };
 		18429F9524CF13A000955B2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18429F9424CF13A000955B2A /* GoogleService-Info.plist */; };
+		186B421E252BA04F00C42309 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B421D252BA04F00C42309 /* NotificationsViewController.swift */; };
 		187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EC15324D9D8AE00CDEE9A /* SignUpController.swift */; };
 		187F13AC24D86C2400529089 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187F13AB24D86C2400529089 /* LoginController.swift */; };
 		188DC03624F305D300768AF6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DC03524F305D300768AF6 /* Extensions.swift */; };
 		18DA056A24E1814B0044D618 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA056924E1814B0044D618 /* FirebaseUser.swift */; };
 		18DA056C24E193160044D618 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA056B24E193160044D618 /* Constants.swift */; };
+		18FF9FF1252B62DA00AB93D9 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9FF0252B62DA00AB93D9 /* RecentViewController.swift */; };
+		18FF9FF5252B633500AB93D9 /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9FF4252B633500AB93D9 /* UserProfileTableViewController.swift */; };
+		18FF9FF8252B635D00AB93D9 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9FF7252B635D00AB93D9 /* MatchViewController.swift */; };
+		18FF9FFB252B637B00AB93D9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9FFA252B637B00AB93D9 /* ChatViewController.swift */; };
+		18FF9FFE252B63A400AB93D9 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9FFD252B63A400AB93D9 /* ImageCollectionViewCell.swift */; };
+		18FFA002252B63BF00AB93D9 /* LikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA001252B63BF00AB93D9 /* LikeTableViewCell.swift */; };
+		18FFA005252B63E900AB93D9 /* NewMatchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA004252B63E900AB93D9 /* NewMatchCollectionView.swift */; };
+		18FFA008252B640300AB93D9 /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA007252B640300AB93D9 /* RecentTableViewCell.swift */; };
+		18FFA00B252B642300AB93D9 /* LikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA00A252B642300AB93D9 /* LikeObject.swift */; };
+		18FFA00E252B643F00AB93D9 /* MatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA00D252B643F00AB93D9 /* MatchObject.swift */; };
+		18FFA012252B645200AB93D9 /* RecentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA011252B645200AB93D9 /* RecentChat.swift */; };
+		18FFA015252B649800AB93D9 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFA014252B649800AB93D9 /* GlobalFunctions.swift */; };
 		3EED625D21494909115E4206 /* Pods_GAM730_MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,11 +65,24 @@
 		18429F8C24CF10FA00955B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18429F8E24CF10FA00955B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18429F9424CF13A000955B2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		186B421D252BA04F00C42309 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		187EC15324D9D8AE00CDEE9A /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		187F13AB24D86C2400529089 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		188DC03524F305D300768AF6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18DA056924E1814B0044D618 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		18DA056B24E193160044D618 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		18FF9FF0252B62DA00AB93D9 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		18FF9FF4252B633500AB93D9 /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
+		18FF9FF7252B635D00AB93D9 /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		18FF9FFA252B637B00AB93D9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		18FF9FFD252B63A400AB93D9 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		18FFA001252B63BF00AB93D9 /* LikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTableViewCell.swift; sourceTree = "<group>"; };
+		18FFA004252B63E900AB93D9 /* NewMatchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchCollectionView.swift; sourceTree = "<group>"; };
+		18FFA007252B640300AB93D9 /* RecentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTableViewCell.swift; sourceTree = "<group>"; };
+		18FFA00A252B642300AB93D9 /* LikeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeObject.swift; sourceTree = "<group>"; };
+		18FFA00D252B643F00AB93D9 /* MatchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchObject.swift; sourceTree = "<group>"; };
+		18FFA011252B645200AB93D9 /* RecentChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChat.swift; sourceTree = "<group>"; };
+		18FFA014252B649800AB93D9 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		3A7423E763AB08F2D398E188 /* Pods-GAM730-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GAM730-MVP.debug.xcconfig"; path = "Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP.debug.xcconfig"; sourceTree = "<group>"; };
 		CAAEB46402830B05898D6238 /* Pods_GAM730_MVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GAM730_MVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FD648DEE3CCDD07A88F6B2 /* Pods-GAM730-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GAM730-MVP.release.xcconfig"; path = "Target Support Files/Pods-GAM730-MVP/Pods-GAM730-MVP.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,25 +130,38 @@
 		18429F7F24CF10FA00955B2A /* GAM730-MVP */ = {
 			isa = PBXGroup;
 			children = (
-				1805843324EEB60D002B5FB7 /* FirebaseListener.swift */,
 				18429F8024CF10FA00955B2A /* AppDelegate.swift */,
 				18429F8224CF10FA00955B2A /* SceneDelegate.swift */,
+				180C76392526275B002BC122 /* CardViewController.swift */,
+				18FF9FF0252B62DA00AB93D9 /* RecentViewController.swift */,
+				186B421D252BA04F00C42309 /* NotificationsViewController.swift */,
 				180C023A25190678001A8475 /* ProfileTableViewController.swift */,
-				18153EB9251B96C000B7B670 /* FileStorage.swift */,
-				18429F8424CF10FA00955B2A /* ViewController.swift */,
-				187F13AB24D86C2400529089 /* LoginController.swift */,
-				1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */,
+				18FF9FF4252B633500AB93D9 /* UserProfileTableViewController.swift */,
+				18FF9FF7252B635D00AB93D9 /* MatchViewController.swift */,
+				18FF9FFA252B637B00AB93D9 /* ChatViewController.swift */,
 				187EC15324D9D8AE00CDEE9A /* SignUpController.swift */,
-				188DC03524F305D300768AF6 /* Extensions.swift */,
+				187F13AB24D86C2400529089 /* LoginController.swift */,
+				18FF9FFD252B63A400AB93D9 /* ImageCollectionViewCell.swift */,
+				18FFA001252B63BF00AB93D9 /* LikeTableViewCell.swift */,
+				18FFA004252B63E900AB93D9 /* NewMatchCollectionView.swift */,
+				18FFA007252B640300AB93D9 /* RecentTableViewCell.swift */,
 				18DA056924E1814B0044D618 /* FirebaseUser.swift */,
+				18FFA00A252B642300AB93D9 /* LikeObject.swift */,
+				18FFA00D252B643F00AB93D9 /* MatchObject.swift */,
+				18FFA011252B645200AB93D9 /* RecentChat.swift */,
 				180C763B25262963002BC122 /* UserCard.swift */,
-				180C763D25262DDB002BC122 /* UserCardModel.swift */,
 				180C763F2526319F002BC122 /* UserCardOverlay.swift */,
+				180C763D25262DDB002BC122 /* UserCardModel.swift */,
 				180C764125263CE1002BC122 /* UserCardContentView.swift */,
 				180C764325263EC5002BC122 /* UserCardFooterView.swift */,
+				1805843124EEAB72002B5FB7 /* FirebaseCollectionReference.swift */,
+				1805843324EEB60D002B5FB7 /* FirebaseListener.swift */,
+				18153EB9251B96C000B7B670 /* FileStorage.swift */,
+				18429F8424CF10FA00955B2A /* ViewController.swift */,
 				18DA056B24E193160044D618 /* Constants.swift */,
+				188DC03524F305D300768AF6 /* Extensions.swift */,
+				18FFA014252B649800AB93D9 /* GlobalFunctions.swift */,
 				18429F8624CF10FA00955B2A /* Main.storyboard */,
-				180C76392526275B002BC122 /* CardViewController.swift */,
 				18429F8924CF10FA00955B2A /* Assets.xcassets */,
 				18429F8B24CF10FA00955B2A /* LaunchScreen.storyboard */,
 				18429F8E24CF10FA00955B2A /* Info.plist */,
@@ -257,21 +296,34 @@
 			files = (
 				1805843224EEAB72002B5FB7 /* FirebaseCollectionReference.swift in Sources */,
 				187EC15424D9D8AE00CDEE9A /* SignUpController.swift in Sources */,
+				18FFA015252B649800AB93D9 /* GlobalFunctions.swift in Sources */,
+				186B421E252BA04F00C42309 /* NotificationsViewController.swift in Sources */,
+				18FF9FFB252B637B00AB93D9 /* ChatViewController.swift in Sources */,
 				180C763E25262DDB002BC122 /* UserCardModel.swift in Sources */,
 				18429F8524CF10FA00955B2A /* ViewController.swift in Sources */,
+				18FF9FF1252B62DA00AB93D9 /* RecentViewController.swift in Sources */,
 				18429F8124CF10FA00955B2A /* AppDelegate.swift in Sources */,
+				18FFA005252B63E900AB93D9 /* NewMatchCollectionView.swift in Sources */,
+				18FFA008252B640300AB93D9 /* RecentTableViewCell.swift in Sources */,
 				1805843424EEB60D002B5FB7 /* FirebaseListener.swift in Sources */,
 				180C764425263EC5002BC122 /* UserCardFooterView.swift in Sources */,
 				18153EBA251B96C000B7B670 /* FileStorage.swift in Sources */,
+				18FF9FF8252B635D00AB93D9 /* MatchViewController.swift in Sources */,
 				188DC03624F305D300768AF6 /* Extensions.swift in Sources */,
 				18429F8324CF10FA00955B2A /* SceneDelegate.swift in Sources */,
 				18DA056C24E193160044D618 /* Constants.swift in Sources */,
+				18FFA00E252B643F00AB93D9 /* MatchObject.swift in Sources */,
 				187F13AC24D86C2400529089 /* LoginController.swift in Sources */,
 				180C76402526319F002BC122 /* UserCardOverlay.swift in Sources */,
+				18FF9FFE252B63A400AB93D9 /* ImageCollectionViewCell.swift in Sources */,
 				180C764225263CE1002BC122 /* UserCardContentView.swift in Sources */,
+				18FFA002252B63BF00AB93D9 /* LikeTableViewCell.swift in Sources */,
+				18FFA00B252B642300AB93D9 /* LikeObject.swift in Sources */,
 				180C763A2526275B002BC122 /* CardViewController.swift in Sources */,
 				180C023B25190678001A8475 /* ProfileTableViewController.swift in Sources */,
 				180C763C25262963002BC122 /* UserCard.swift in Sources */,
+				18FFA012252B645200AB93D9 /* RecentChat.swift in Sources */,
+				18FF9FF5252B633500AB93D9 /* UserProfileTableViewController.swift in Sources */,
 				18DA056A24E1814B0044D618 /* FirebaseUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

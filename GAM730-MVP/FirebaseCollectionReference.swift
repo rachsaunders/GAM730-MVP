@@ -11,15 +11,15 @@ import FirebaseFirestore
 
 
 
-    
-    enum FirebaseCollectionReference: String {
-        
-        case User
-        
-    }
+enum FCollectionReference: String {
+    case User
+    case Like
+    case Match
+    case Recent
+}
 
-    
-func FirebaseReference(_ collectionReference: FirebaseCollectionReference) -> CollectionReference {
+
+func FirebaseReference(_ collectionReference: FCollectionReference) -> CollectionReference {
     
     return Firestore.firestore().collection(collectionReference.rawValue)
 }

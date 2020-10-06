@@ -9,9 +9,9 @@
 import UIKit
 
 struct UserCardModel {
-let id: String
-  let name: String
-  let age: Int
-  let occupation: String?
-  let image: UIImage?
+    let id: String
+    let name: String
+    let age: Int
+    let occupation: String?
+    let image: UIImage?
 }

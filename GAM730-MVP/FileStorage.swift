@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import FirebaseStorage
 
 let storage = Storage.storage()
@@ -17,6 +16,7 @@ class FileStorage {
     class func uploadImage(_ image: UIImage, directory: String, completion: @escaping (_ documentLink: String?) -> Void) {
         
         let storageRef = storage.reference(forURL: kFILEREFERENCE).child(directory)
+        
         let imageData = image.jpegData(compressionQuality: 0.6)
         
         var task: StorageUploadTask!
@@ -26,7 +26,7 @@ class FileStorage {
             task.removeAllObservers()
             
             if error != nil {
-                print("error uploading image")
+                print("error uploading image", error!.localizedDescription)
                 return
             }
             
@@ -36,23 +36,23 @@ class FileStorage {
                     completion(nil)
                     return
                 }
-                
-                print("we have uploaded image to firebase yay")
+                print("we have uploaded image to ", downloadUrl.absoluteString)
                 completion(downloadUrl.absoluteString)
-                
             }
-            
         })
     }
+    
+    // the code above has been checked for errors
     
     //changed the imagelinks below to imageLinks 
     
     
-    class func uploadImages(_ images: [UIImage?], completion: @escaping (_ imageLinks: [String]) -> Void) {
+    class func uploadImages(_ images: [UIImage?], completion: @escaping (_ imagelinks: [String]) -> Void) {
         
         var uploadImagesCount = 0
         var imageLinkArray : [String] = []
         var nameSuffix = 0
+        
         
         for image in images {
             
@@ -60,8 +60,8 @@ class FileStorage {
             
             uploadImage(image!, directory: fileDirectory) { (imageLink) in
                 
-                
                 if imageLink != nil {
+                    
                     imageLinkArray.append(imageLink!)
                     uploadImagesCount += 1
                     
@@ -74,78 +74,74 @@ class FileStorage {
             nameSuffix += 1
         }
         
-
-    
     }
+    
+    // code above has been checked for errors
+    
     
     
     
     class func downloadImage(imageUrl: String, completion: @escaping (_ image: UIImage?) -> Void) {
-        
-        // 46
-        
-        let imageFileName = ((imageUrl.components(separatedBy: "_").last!).components(separatedBy: "?").first)!.components(separatedBy: "").first!
-        
-    
+                
+        let imageFileName = ((imageUrl.components(separatedBy: "_").last!).components(separatedBy: "?").first)!.components(separatedBy: ".").first!
+
         if fileExistsAt(path: imageFileName) {
-            print("we have local file")
             
-            if let contentsOfFile = UIImage(contentsOfFile: fileInDocumentsDiretory(filename: imageFileName)) {
+            if let contentsOfFile = UIImage(contentsOfFile: fileInDocumentsDirectory(filename: imageFileName)) {
                 completion(contentsOfFile)
             } else {
-                print("couldn't generate image from local image")
+                print("couldnt generate image from local image")
                 completion(nil)
             }
             
         } else {
-            
-            //download aka...
-            print("Downloading")
-            
+
             if imageUrl != "" {
                 
                 let documentURL = URL(string: imageUrl)
                 
                 let downloadQueue = DispatchQueue(label: "downloadQueue")
-                
+
                 downloadQueue.async {
                     
                     let data = NSData(contentsOf: documentURL!)
                     
                     if data != nil {
+                        
                         let imageToReturn = UIImage(data: data! as Data)
                         
                         FileStorage.saveImagelocally(imageData: data!, fileName: imageFileName)
                         
                         completion(imageToReturn)
+                        
                     } else {
                         print("no image in database")
                         completion(nil)
                     }
                 }
-                
+
             } else {
                 completion(nil)
             }
-            
         }
-        
     }
     
     
     
     
+    
     class func downloadImages(imageUrls: [String], completion: @escaping (_ images: [UIImage?]) -> Void) {
-        
+               
         var imageArray: [UIImage] = []
-        var downloadCounter  = 0
+        
+        var downloadCounter = 0
         
         for link in imageUrls {
             
             let url = NSURL(string: link)
             
             let downloadQueue = DispatchQueue(label: "downloadQueue")
-            
+
             downloadQueue.async {
                 
                 downloadCounter += 1
@@ -153,13 +149,12 @@ class FileStorage {
                 let data = NSData(contentsOf: url! as URL)
                 
                 if data != nil {
-                   
+                    
                     imageArray.append(UIImage(data: data! as Data)!)
                     
                     if downloadCounter == imageArray.count {
                         
                         completion(imageArray)
-                        
                     }
                     
                 } else {
@@ -168,11 +163,7 @@ class FileStorage {
                 }
             }
         }
-        
-        
-            
-        }
-        
+    }
     
     
     
@@ -183,9 +174,7 @@ class FileStorage {
         var docURL = getDocumentsURL()
         
         docURL = docURL.appendingPathComponent(fileName, isDirectory: false)
-        
         imageData.write(to: docURL, atomically: true)
-        
     }
     
 }
@@ -198,27 +187,16 @@ func getDocumentsURL() -> URL {
     return documentURL!
 }
 
-func fileInDocumentsDiretory(filename: String) -> String {
+
+func fileInDocumentsDirectory(filename: String) -> String {
     let fileURL = getDocumentsURL().appendingPathComponent(filename)
     
     return fileURL.path
-    
-    
 }
+
 
 func fileExistsAt(path: String) -> Bool {
     
-//    var doesExist = false
-//
-//    let filePath = fileInDocumentsDiretory(filename: path)
-//
-//    if FileManager.default.fileExists(atPath: filePath) {
-//        doesExist = true
-//    } else {
-//        doesExist = false
-//    }
-//
-//    return doesExist
-    
-    return FileManager.default.fileExists(atPath: fileInDocumentsDiretory(filename: path))
+    return FileManager.default.fileExists(atPath: fileInDocumentsDirectory(filename: path))
 }
+

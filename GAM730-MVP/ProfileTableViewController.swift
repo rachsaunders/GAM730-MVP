@@ -39,42 +39,39 @@ class ProfileTableViewController: UITableViewController {
     
     @IBOutlet weak var lookingForTextField: UITextField!
     
-    // vars
-    
+    //MARK: - Vars
     var editingMode = false
-    
     var uploadingAvatar = true
     
     var avatarImage: UIImage?
-    
     var gallery: GalleryController!
     
-    // View Life Cycle
+    var alertTextField: UITextField!
     
+    
+    //MARK: - ViewLifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         overrideUserInterfaceStyle = .light
         
         setupBackgrounds()
         
-        if  FirebaseUser.currentUser() != nil {
+        if FirebaseUser.currentUser() != nil {
             loadUserData()
             updateEditingMode()
         }
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         return 0
-        
     }
     
-  
-    // IBActions
+
+
     
+    //MARK: - IBActions
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
         showEditOptions()
@@ -83,15 +80,13 @@ class ProfileTableViewController: UITableViewController {
     @IBAction func cameraButtonPressed(_ sender: Any) {
         
         showPictureOptions()
-        
     }
     
+    
     @IBAction func editButtonPressed(_ sender: Any) {
-        
         editingMode.toggle()
         updateEditingMode()
         
-        // if else
         editingMode ? showKeyboard() : hideKeyboard()
         showSaveButton()
     }
@@ -100,16 +95,17 @@ class ProfileTableViewController: UITableViewController {
         
         let user = FirebaseUser.currentUser()!
         
-        // see note 36
         user.about = aboutMeTextView.text
-     //   user.jobTitle = jobTextField.text ?? ""
+        user.profession = jobTextField.text ?? ""
         user.profession = professionTextField.text ?? ""
         user.isMan = genderTextField.text == "Male"
+    //    user.city = cityTextField.text ?? ""
         user.country = countryTextField.text ?? ""
         user.lookingFor = lookingForTextField.text ?? ""
+  //      user.height = Double(heightTextField.text ?? "0") ?? 0.0
         
         if avatarImage != nil {
-            
+
             uploadAvatar(avatarImage!) { (avatarLink) in
                 
                 user.avatarLink = avatarLink ?? ""
@@ -117,113 +113,95 @@ class ProfileTableViewController: UITableViewController {
                 
                 self.saveUserData(user: user)
                 self.loadUserData()
-                
             }
             
         } else {
-            
-            // save
+           //save
             saveUserData(user: user)
             loadUserData()
-            
         }
         
         editingMode = false
         updateEditingMode()
         showSaveButton()
-        
-        
     }
     
     private func saveUserData(user: FirebaseUser) {
         
         user.saveUserLocally()
         user.saveUserToFireStore()
-        
     }
     
-    
-    // Setup
+    //MARK: - Setup
     private func setupBackgrounds() {
         
         profileCellBackgroundView.clipsToBounds = true
-        // curve the corners
         profileCellBackgroundView.layer.cornerRadius = 100
-        
         profileCellBackgroundView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        aboutMeView.layer.cornerRadius = 10
         
-     
+        aboutMeView.layer.cornerRadius = 10
     }
     
-    private func showSaveButton () {
+    private func showSaveButton() {
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editUserData))
         
         navigationItem.rightBarButtonItem = editingMode ? saveButton : nil
     }
     
-    // MARK:- LoadUserData
-    
+    //MARK: - LoadUserDada
     private func loadUserData() {
         
-        
-       
         let currentUser = FirebaseUser.currentUser()!
         
-        FileStorage.downloadImage(imageUrl: currentUser.avatarLink) {
-            (image) in 
+        FileStorage.downloadImage(imageUrl: currentUser.avatarLink) { (image) in
+            
         }
-        
+
         nameAgeLabel.text = currentUser.fullName + ", \(abs(currentUser.dateOfBirth.interval(ofComponent: .year, fromDate: Date())))"
         
         cityCountryLabel.text = currentUser.country
         aboutMeTextView.text = currentUser.about != "" ? currentUser.about : "A little bit about me..."
         jobTextField.text = currentUser.profession
         professionTextField.text = currentUser.profession
-        // fix gender issues 3 options not two
         genderTextField.text = currentUser.isMan ? "Male" : "Female"
+    //    cityTextField.text = currentUser.city
         countryTextField.text = currentUser.country
+     //   heightTextField.text = "\(currentUser.height)"
         lookingForTextField.text = currentUser.lookingFor
-        
-        
-        
-        // changed the below from avatarImageView to avatarImage due to an error
-        avatarImageView.image = UIImage(named: "avatar")
-    
-        
-        // TO DO SEE POSTIT NOTE IN PINK 34 and maybe 35
-        
-        avatarImageView.image = currentUser.avatar
+        avatarImageView.image = UIImage(named: "avatar")?.circleMasked
+
+        avatarImageView.image = currentUser.avatar?.circleMasked
         
     }
-    
-    // Editing Mode
-    
+
+
+    //MARK: - Editing Mode
     private func updateEditingMode() {
         
         aboutMeTextView.isUserInteractionEnabled = editingMode
         jobTextField.isUserInteractionEnabled = editingMode
         professionTextField.isUserInteractionEnabled = editingMode
         genderTextField.isUserInteractionEnabled = editingMode
+     //   cityTextField.isUserInteractionEnabled = editingMode
         countryTextField.isUserInteractionEnabled = editingMode
+    //    heightTextField.isUserInteractionEnabled = editingMode
         lookingForTextField.isUserInteractionEnabled = editingMode
-        
     }
 
-    // Helpers
+    
+    //MARK: - Helpers
     private func showKeyboard() {
         self.aboutMeTextView.becomeFirstResponder()
     }
-    
+
     private func hideKeyboard() {
-        
         self.view.endEditing(false)
     }
     
     //MARK: - FileStorage
     
-    private func uploadAvatar(_ image: UIImage, completion: @escaping (_ avatarLink: String?) -> Void) {
+    private func uploadAvatar(_ image: UIImage, completion: @escaping (_ avatarLink: String?)-> Void) {
         
         ProgressHUD.show()
         
@@ -232,22 +210,21 @@ class ProfileTableViewController: UITableViewController {
         FileStorage.uploadImage(image, directory: fileDirectory) { (avatarLink) in
             
             ProgressHUD.dismiss()
-            
             FileStorage.saveImagelocally(imageData: image.jpegData(compressionQuality: 0.8)! as NSData, fileName: FirebaseUser.currentId())
-            
             completion(avatarLink)
-            
         }
         
     }
+
     
     private func uploadImages(images: [UIImage?]) {
-        ProgressHUD.show()
         
+        ProgressHUD.show()
+
         FileStorage.uploadImages(images) { (imageLinks) in
             
             ProgressHUD.dismiss()
-            
+
             let currentUser = FirebaseUser.currentUser()!
             
             currentUser.imageLinks = imageLinks
@@ -270,100 +247,181 @@ class ProfileTableViewController: UITableViewController {
         Config.initialTab = .imageTab
         
         self.present(gallery, animated: true, completion: nil)
-        
-        
     }
+
+
     
-    
-    // Alert Controller
-    
+    //MARK: - AlertController
     private func showPictureOptions() {
         
-        let alertController = UIAlertController(title: "Upload Picture", message: "You can change your picture", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Upload Picture", message: "You can change your Avatar or upload more pictures.", preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Change Avatar", style: .default, handler: { (alert) in
             
             self.showGallery(forAvatar: true)
-            
-            
         }))
         
         alertController.addAction(UIAlertAction(title: "Upload Pictures", style: .default, handler: { (alert) in
-                 
-                    self.showGallery(forAvatar: true)
-                 
-                 
-             }))
-             
+            
+            self.showGallery(forAvatar: false)
+        }))
+        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        self.present(alertController, animated: true, completion: nil)
         
+        self.present(alertController, animated: true, completion: nil)
     }
+    
     
     private func showEditOptions() {
         
-        let alertController = UIAlertController(title: "Edit Account", message: "You are about to edit your account info.", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Edit Account", message: "You are about to edit sensitive information about your account.", preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Change Email", style: .default, handler: { (alert) in
             
-        
-            
-            
+            self.showChangeField(value: "Email")
         }))
         
         alertController.addAction(UIAlertAction(title: "Change Name", style: .default, handler: { (alert) in
-                 
-           print("Change name is working")
-                 
-                 
-             }))
+            
+            self.showChangeField(value: "Name")
+        }))
         
-        alertController.addAction(UIAlertAction(title: "Log Out", style: .default, handler: { (alert) in
-                       
-                       
-                       
-                       
-                   }))
-                   
-             
-        alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (alert) in
+            
+            self.logOutUser()
+        }))
+
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
         
         self.present(alertController, animated: true, completion: nil)
+    }
+
+    
+    private func showChangeField(value: String) {
+        
+        let alertView = UIAlertController(title: "Updating \(value)", message: "Please write your \(value)", preferredStyle: .alert)
+        
+        alertView.addTextField { (textField) in
+            self.alertTextField = textField
+            self.alertTextField.placeholder = "New \(value)"
+        }
+        
+        alertView.addAction(UIAlertAction(title: "Update", style: .destructive, handler: { (action) in
+            
+            self.updateUserWith(value: value)
+        }))
+        
+        alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    //MARK: - Change user info
+    
+    private func updateUserWith(value: String) {
+        
+        if alertTextField.text != "" {
+            
+            value == "Email" ? changeEmail() : changeUserName()
+        } else {
+            ProgressHUD.showError("\(value) is empty")
+        }
+    }
+
+    
+    private func changeEmail() {
+        
+        FirebaseUser.currentUser()?.updateUserEmail(newEmail: alertTextField.text!, completion: { (error) in
+            
+            if error == nil {
+                
+                if let currentUser = FirebaseUser.currentUser() {
+                    currentUser.email = self.alertTextField.text!
+                    self.saveUserData(user: currentUser)
+                }
+
+                ProgressHUD.showSuccess("Success!")
+            } else {
+                ProgressHUD.showError(error!.localizedDescription)
+            }
+        })
+
+    }
+    
+    private func changeUserName() {
+
+        if let currentUser = FirebaseUser.currentUser() {
+            currentUser.fullName = alertTextField.text!
+            
+            saveUserData(user: currentUser)
+            loadUserData()
+        }
+    }
+
+    //MARK: - LogOut
+    
+    private func logOutUser() {
+        
+        FirebaseUser.logOutCurrentUser { (error) in
+            
+            if error == nil {
+                
+                let loginView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "loginView")
+                
+                DispatchQueue.main.async {
+                    
+                    loginView.modalPresentationStyle = .fullScreen
+                    self.present(loginView, animated: true, completion: nil)
+                }
+                
+            } else {
+                ProgressHUD.showError(error!.localizedDescription)
+            }
+        }
         
     }
+
+
 }
 
 
 extension ProfileTableViewController: GalleryControllerDelegate {
+    
+    
     func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
         
         if images.count > 0 {
+            
             if uploadingAvatar {
+                
                 images.first!.resolve { (icon) in
+                    
                     if icon != nil {
+                        
                         self.editingMode = true
                         self.showSaveButton()
-                        self.avatarImageView.image = icon
+                        
+                        self.avatarImageView.image = icon?.circleMasked
                         self.avatarImage = icon
-                    
                     } else {
-                        ProgressHUD.showError("Couldn't select Image!")
+                        ProgressHUD.showError("Couldn't select image!")
                     }
-                    
                 }
+                
             } else {
                 
                 Image.resolve(images: images) { (resolvedImages) in
                     
-                    
-                    
+                    self.uploadImages(images: resolvedImages)
                 }
-                
             }
         }
         
-         controller.dismiss(animated: true, completion: nil)
+        
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
@@ -371,14 +429,10 @@ extension ProfileTableViewController: GalleryControllerDelegate {
     }
     
     func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
-         controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryControllerDidCancel(_ controller: GalleryController) {
-         controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
 }
